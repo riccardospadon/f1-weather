@@ -1,0 +1,18 @@
+@font-face {
+    font-family: "Formula1 Display";
+    src: url("../public/assets/fonts/Formula1-Display-Black.woff2") format("woff2"),
+        url("../public/assets/fonts/Formula1-Display-Black.woff") format("woff"),
+        url("../public/assets/fonts/Formula1-Black.ttf") format("truetype");
+    font-weight: 900;
+    font-style: normal;
+    font-display: swap;
+}
+
+.App{
+    font-family: 'Formula1 Display';
+    font-weight: 900;
+    font-style: normal;
+    background-color: #333;
+    color: #fff;
+}
+
