@@ -1,0 +1,35 @@
+.nameTrack {
+    white-space: nowrap;
+    width: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.imgTrack {
+    aspect-ratio: 1/1;
+    object-fit: fill;
+    width: 100%;
+}
+
+.cardTrack {
+    transform: scale(1);
+    transition: transform 0.7s ease-in-out;
+    position: relative;
+}
+
+.cardTrack:hover {
+    transform: scale(1.1);
+    box-shadow: 0px 0px 15px 8px rgba(248, 247, 247, 0.849);
+}
+
+.textDeco {
+    text-decoration: none;
+}
+
+cardBg {
+    background-color: #3a3a3acb;
+    border: 1px;
+    border-style: solid;
+    border-color: #e10600;
+    border-radius: 10%;
+}
