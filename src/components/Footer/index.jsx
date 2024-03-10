@@ -1,7 +1,7 @@
 import { Row, Col } from "react-bootstrap"
 import cn from "classnames"
 import styles from "./style.module.scss"
-import { Facebook, Github, Instagram, Linkedin } from "react-bootstrap-icons"
+import { Github, Linkedin } from "react-bootstrap-icons"
 
 export default function Footer() {
     return (
@@ -19,32 +19,19 @@ export default function Footer() {
                     md={12}
                     className={cn(styles.flexCenter, "mt-5 mb-5")}
                 >
-                    <div>© F1 2024 Weather. A product of Riccardo Spadon.</div>
-                    <div className="ms-1">
-                        Check me on:
+                    <div>© F1 2024 Weather. A product of Riccardo Spadon. Check me on:</div>
+                    <div className={cn(styles.textCenter, 'ms-1')}>
                         <a
                             className={cn(styles.noDecor)}
                             href="https://github.com/riccardospadon"
                         >
-                            <Github className="ms-3" size={30} />
+                            <Github className="ms-2" size={24} />
                         </a>
                         <a
                             className={cn(styles.noDecor)}
                             href="https://www.linkedin.com/in/riccardo-spadondev/"
                         >
-                            <Linkedin className="ms-3" size={30} />
-                        </a>
-                        <a
-                            className={cn(styles.noDecor)}
-                            href="https://www.instagram.com/riccardospadon/"
-                        >
-                            <Instagram className="ms-3" size={30} />
-                        </a>
-                        <a
-                            className={cn(styles.noDecor)}
-                            href="https://www.facebook.com/riccardo.spadon.56?locale=it_IT"
-                        >
-                            <Facebook className="ms-3" size={30} />
+                            <Linkedin className="ms-3" size={24} />
                         </a>
                     </div>
                 </Col>

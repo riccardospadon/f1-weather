@@ -28,8 +28,8 @@ export default function Main() {
                 setSortedCircuits={setSortedCircuits}
             />
             <Container>
-                <h1>🌦 Look the weather for your favourite Grand Prix! 🏁</h1>
-                <Row>
+                <h1>⛅ Look the weather for your favourite Grand Prix! 🏁</h1>
+                <Row className="mt-5">
                     {sortedCircuits.map((circuit, i) =>(
                         <CircuitCard circuit={circuit} key={i} />
                     ))}
