@@ -5,13 +5,12 @@
     text-overflow: ellipsis;
 }
 
-.imgCircuit {
-    aspect-ratio: 1/1;
-    object-fit: fill;
-    width: 100%;
-}
-
 .cardCircuit {
+    background-color: #e9e9e9cb;
+    border: 1px;
+    border-style: solid;
+    border-color: #e10600;
+    border-radius: 10%;
     transform: scale(1);
     transition: transform 0.7s ease-in-out;
     position: relative;
@@ -26,10 +25,7 @@
     text-decoration: none;
 }
 
-cardBg {
-    background-color: #3a3a3acb;
-    border: 1px;
-    border-style: solid;
-    border-color: #e10600;
-    border-radius: 10%;
+.flag{
+    width: 50px !important;
+    height: 30px;
 }

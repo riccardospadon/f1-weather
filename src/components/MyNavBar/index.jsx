@@ -11,7 +11,7 @@ export default function MyNavBar({ searchQuery, setSearchQuery, circuits, setSor
         const searchTerm = event.target.value.trim()
         setSearchQuery(searchTerm)
         const filteredCircuits = circuits.filter(circuit =>
-            circuit.circuit_short_name.toLowerCase().includes(searchTerm.toLowerCase())
+            circuit.country_name.toLowerCase().includes(searchTerm.toLowerCase())
         );
         setSortedCircuits(filteredCircuits)
     }

@@ -19,6 +19,17 @@ export default function Main() {
             .catch((error) => console.error("Error fetching circuits!", error))
     }, [])
 
+    const circuitLayouts = {
+        "Bahrain": "https://media.formula1.com/image/upload/f_auto/q_auto/v1677245035/content/dam/fom-website/2018-redesign-assets/Track%20icons%204x3/Bahrain%20carbon.png.transform/3col/image.png",
+        "Saudi Arabia": "https://media.formula1.com/image/upload/f_auto/q_auto/v1677245030/content/dam/fom-website/2018-redesign-assets/Track%20icons%204x3/Saudi%20Arabia%20carbon.png.transform/3col/image.png",
+
+    }
+
+    const countryFlags = {
+        "Bahrain": "https://flagcdn.com/bh.svg",
+        "Saudi Arabia": "https://flagcdn.com/sa.svg"
+    }
+
     return (
         <>
             <MyNavBar
@@ -31,7 +42,7 @@ export default function Main() {
                 <h1>⛅ Look the weather for your favourite Grand Prix! 🏁</h1>
                 <Row className="mt-5">
                     {sortedCircuits.map((circuit, i) =>(
-                        <CircuitCard circuit={circuit} key={i} />
+                        <CircuitCard circuit={circuit} layout={circuitLayouts[circuit.country_name]} flag={countryFlags[circuit.country_name]} key={i} />
                     ))}
                 </Row>
             </Container>

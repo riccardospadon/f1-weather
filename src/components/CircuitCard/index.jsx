@@ -3,7 +3,7 @@ import { Link } from "react-router-dom"
 import cn from "classnames"
 import styles from "./style.module.scss"
 
-export default function CircuitCard({ circuit }) {
+export default function CircuitCard({ circuit, layout, flag }) {
     // function for change date format
     const formatDate = (dateString) => {
         const options = {
@@ -25,21 +25,34 @@ export default function CircuitCard({ circuit }) {
                 to={`/circuit/${circuit.circuit_key}`}
                 className={cn(styles.textDeco)}
             >
-                <Card className={cn(styles.cardCircuit, styles.cardBg)}>
+                <Card className={cn(styles.cardCircuit)}>
                     <Card.Body>
                         <Card.Title
                             className={cn("card-title", styles.nameCircuit)}
                         >
-                            <h4>{circuit.circuit_short_name}</h4>
-                            {/*di fianco la bandiera del luogo, se riesco */}
+                            <div className="d-flex justify-content-between">
+                                {/* location of the grand prix */}
+                                <h4>{circuit.country_name}</h4>
+                                {/*di fianco la bandiera del luogo, se riesco */}
+                                {flag && (
+                                    <Card.Img
+                                        src={flag}
+                                        variant="top"
+                                        className={cn(styles.flag)}
+                                    />
+                                )}
+                            </div>
                         </Card.Title>
-                        {/* <Card.Img
-                        src={circuit.layout}
-                        variant="top"
-                        className={cn(styles.imgCircuit)}
-                    /> */}
+                        {/* layout of the grand prix*/}
+                        {layout && (
+                            <Card.Img
+                                src={layout}
+                                variant="top"
+                                className={cn(styles.imgCircuit)}
+                            />
+                        )}
 
-                        {/* qui andrà la data del weekend, poi trovo come fare*/}
+                        {/* date of the weekend */}
                         <p>{formatDate(circuit.date_start)}</p>
                     </Card.Body>
                 </Card>
