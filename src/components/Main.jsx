@@ -16,7 +16,7 @@ export default function Main() {
                 setCircuits(data)
                 setSortedCircuits(data)
             })
-            .catch((error) => console.error("Errore fetching circuits!", error))
+            .catch((error) => console.error("Error fetching circuits!", error))
     }, [])
 
     return (

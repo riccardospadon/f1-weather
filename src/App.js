@@ -1,3 +1,4 @@
+import { Route, Routes } from "react-router-dom"
 import "./App.css"
 import Footer from "./components/Footer"
 import Main from "./components/Main"
@@ -5,8 +6,17 @@ import Main from "./components/Main"
 function App() {
     return (
         <div className="App">
-          <Main />
-          <Footer />
+            <Routes>
+                <Route
+                    path="/"
+                    element={
+                        <>
+                            <Main />
+                            <Footer />
+                        </>
+                    }
+                />
+            </Routes>
         </div>
     )
 }
