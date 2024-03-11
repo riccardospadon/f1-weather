@@ -25,7 +25,7 @@ export default function CircuitCard({ circuit, layout, flag }) {
                 to={`/circuit/${circuit.circuit_key}`}
                 className={cn(styles.textDeco)}
             >
-                <Card className={cn(styles.cardCircuit)}>
+                <Card className={cn(styles.cardCircuit, styles.bg)}>
                     <Card.Body>
                         <Card.Title
                             className={cn("card-title", styles.nameCircuit)}
