@@ -18,7 +18,7 @@ export default function MyNavBar({ searchQuery, setSearchQuery, circuits, setSor
 
     return (
         <Navbar expand="lg" className={cn(styles.navbg, "mb-5")}>
-            <Container className="px-0">
+            <Container>
                 <Link to='/' className={cn(styles.navLink, 'd-flex align-items-center')}>
                     <img src={logo} alt="F1.png" className={cn(styles.logo)} />
                     <div className={cn(styles.yearWeather)}>2024 WEATHER</div>

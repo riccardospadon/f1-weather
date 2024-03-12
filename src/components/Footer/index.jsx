@@ -19,7 +19,7 @@ export default function Footer() {
                     md={12}
                     className={cn(styles.flexCenter, "mt-5 mb-5")}
                 >
-                    <div>© F1 2024 Weather. A product of Riccardo Spadon. Check me on:</div>
+                    <div>F1 2024 Weather is an UNOFFICIAL F1 web app. A product of Riccardo Spadon. Check me on:</div>
                     <div className={cn(styles.textCenter, 'ms-1')}>
                         <a
                             className={cn(styles.noDecor)}

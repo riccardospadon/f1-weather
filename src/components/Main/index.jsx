@@ -1,7 +1,9 @@
 import { useEffect, useState } from "react"
-import MyNavBar from "./MyNavBar"
+import MyNavBar from "../MyNavBar"
 import { Container, Row } from "react-bootstrap"
-import CircuitCard from "./CircuitCard"
+import CircuitCard from "../CircuitCard"
+import cn from "classnames"
+import styles from "./style.module.scss"
 
 export default function Main() {
     const [circuits, setCircuits] = useState([])
@@ -79,7 +81,7 @@ export default function Main() {
                 setSortedCircuits={setSortedCircuits}
             />
             <Container>
-                <h1>⛅ Look the weather for your favourite Grand Prix! 🏁</h1>
+                <h1 className={cn(styles.title)}>⛅ Look the weather of your favourite Grand Prix! 🏁</h1>
                 <Row className="mt-5">
                     {sortedCircuits.map((circuit, i) =>(
                         <CircuitCard circuit={circuit} layout={circuitLayouts[circuit.country_name]} flag={countryFlags[circuit.country_name]} key={i} />
