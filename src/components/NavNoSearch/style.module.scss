@@ -1,0 +1,28 @@
+.navbg {
+    background-color: #e10600;
+}
+
+.logo {
+    height: 2rem;
+    width: 5rem;
+}
+
+.navLink {
+    text-decoration: none;
+}
+
+.yearWeather {
+    font-size: 2rem;
+    color: #fff;
+}
+
+@media only screen and (max-width: 400px) {
+    .logo{
+        height: 1.2rem;
+        width: 6rem;
+    }
+
+    .yearWeather{
+        font-size: 1.2rem;
+    }
+}
