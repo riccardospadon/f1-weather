@@ -1,3 +1,8 @@
-.navbg {
-    background-color: #e10600;
+.link {
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.link.disabled {
+    display: none;
 }

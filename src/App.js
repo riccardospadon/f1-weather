@@ -3,6 +3,7 @@ import "./App.css"
 import Footer from "./components/Footer"
 import Main from "./components/Main"
 import SingleCircuit from "./components/SingleCircuit"
+import NavNoSearch from "./components/NavNoSearch"
 
 function App() {
     return (
@@ -24,6 +25,7 @@ function App() {
                     path="/circuit/:id"
                     element={
                         <>
+                            <NavNoSearch />
                             <SingleCircuit />
                             <Footer />
                         </>
