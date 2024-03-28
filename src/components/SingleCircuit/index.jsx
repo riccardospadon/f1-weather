@@ -1,45 +1,17 @@
 import { Container } from "react-bootstrap"
 import styles from "./style.module.scss"
 import cn from "classnames"
-import { ArrowLeftShort, ArrowRightShort } from "react-bootstrap-icons"
-import { useState } from "react"
 
-export default function SingleCircuit({ circuits, window }) {
-
-    const circuitId = window.params.id
-    const currentIndex = circuits.findIndex(circuit => circuit.id === circuitId)
-
-    const handleNext = () => {
-        if(currentIndex < circuits.length - 1) {
-            const nextCircuitId = circuits[currentIndex + 1].id
-            window.location.href = `/circuits/${nextCircuitId}`
-        }
+export default function SingleCircuit() {
+    const tyres = {
+        C1: "http://d3nv2arudvw7ln.cloudfront.net/staticfolder/Tyre/resources/img/white-parentesi.png", // hard tyre
+        C2: "http://d3nv2arudvw7ln.cloudfront.net/staticfolder/Tyre/resources/img/yellow-parentesi.png", // medium tyre
+        C3: "http://d3nv2arudvw7ln.cloudfront.net/staticfolder/Tyre/resources/img/red-parentesi.png", // soft tyre
+        INTERMEDIATE:
+            "https://d3nv2arudvw7ln.cloudfront.net/images/global/380/862/cinturato-green-intermediate-4505508953587.png",
+        FULL_WET:
+            "https://d3nv2arudvw7ln.cloudfront.net/images/global/968/233/cinturato-blue-wet-4505508953865.png",
     }
 
-    const handlePrevious = () => {
-        if(currentIndex > 0){
-            const previousCircuitId = circuits[currentIndex - 1].id
-            window.location.href = `/circuits/${previousCircuitId}`
-        }
-    }
-
-    return (
-        <>
-            {/* Commands under the navbar for navigate from a circuit to the others */}
-            <Container className="d-flex justify-content-between">
-                <div onClick={handlePrevious}>
-                    <ArrowLeftShort />
-                    Previous
-                </div>
-
-                <div onClick={handleNext}>
-                    Next
-                    <ArrowRightShort />
-                </div>
-
-                {/* Content: weather from that weekend and the tyres that drivers used */}
-                
-            </Container>
-        </>
-    )
+    return <Container></Container>
 }
