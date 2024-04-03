@@ -13,5 +13,14 @@ export default function SingleCircuit() {
             "https://d3nv2arudvw7ln.cloudfront.net/images/global/968/233/cinturato-blue-wet-4505508953865.png",
     }
 
+    // TODO: create a function that match the date from F1 API with the OPENMETEO ones...
+
+    // TODO: create a function that automatically see the location (maybe feel like into the main with flags and name countries) and return the right country and the weather too.
+
+    // TODO: create a function that automatically see the weather and return the right tyres that were used/using in the current GP
+
+    // TODO: create a function that I can navigate through the circuits (previous and next)
+
+    // TODO: create the layout of the page
     return <Container></Container>
 }
