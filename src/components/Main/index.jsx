@@ -4,9 +4,7 @@ import { Container, Row } from "react-bootstrap"
 import CircuitCard from "../CircuitCard"
 import cn from "classnames"
 import styles from "./style.module.scss"
-import SingleCircuit from "../SingleCircuit"
-import { Route, Router } from "react-router-dom"
-import { Switch } from "react-router"
+
 
 export default function Main() {
     const [circuits, setCircuits] = useState([])

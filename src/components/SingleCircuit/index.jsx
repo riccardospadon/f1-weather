@@ -1,8 +1,11 @@
 import { Container } from "react-bootstrap"
+import { useState, useEffect } from "react"
+import { useParams } from "react-router-dom"
 import styles from "./style.module.scss"
 import cn from "classnames"
 
 export default function SingleCircuit() {
+    const { id } = useParams()
     const [circuit, setCircuit] = useState([])
     const [openMeteoData, setOpenMeteoData] = useState({})
 
@@ -231,7 +234,7 @@ export default function SingleCircuit() {
         const fetchOpenMeteoData = async () => {
             
         }
-    }, [])
+    }, [id])
 
     // TODO: create a function that automatically see the location (maybe feel like into the main with flags and name countries) and return the right country and the weather too.
 
