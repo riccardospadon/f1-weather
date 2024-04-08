@@ -232,9 +232,27 @@ export default function SingleCircuit() {
 
         // fetch openmeteo API
         const fetchOpenMeteoData = async () => {
-            
+            const params = paramsLocation[id] // id = location_key
+            const url = "https://archive-api.openmeteo.com/v1/archive"
+            try{
+                const responses = await fetchWeatherApi(url, params)
+                const response = responses[0]
+                const utcOffsetSeconds = response.utcOffSetSeconds()
+                const daily = response.daily();
+                const time = range(Number(daily.time()), Number(daily.timeEnd()), daily.interval()).map(
+                    (t) => new Date((t + utcOffsetSeconds) * 1000)
+                )
+                setOpenMeteoData({ time })
+            } catch (error){
+                console.error("Error fetching OpenMeteo data", error)
+            }
         }
+        fetchOpenMeteoData()
     }, [id])
+
+    const range = (start, stop, step) => {
+        return Array.from({ length: (stop - start)/step }, (_, i) => start + i )
+    }
 
     // TODO: create a function that automatically see the location (maybe feel like into the main with flags and name countries) and return the right country and the weather too.
 
