@@ -4,6 +4,7 @@ import { Container, Row } from "react-bootstrap"
 import CircuitCard from "../CircuitCard"
 import cn from "classnames"
 import styles from "./style.module.scss"
+import { Link } from "react-router-dom"
 
 
 export default function Main() {
@@ -24,6 +25,10 @@ export default function Main() {
             .catch((error) => console.error("Error fetching circuits!", error))
         setIsLoading(false) // false when loading end (error too!!)
     }, [])
+
+    const handleClickCircuit = (circuitLocation) => {
+        
+    }
 
     const circuitLayouts = {
         Bahrain:

@@ -3,6 +3,7 @@ import { useState, useEffect } from "react"
 import { useParams } from "react-router-dom"
 import styles from "./style.module.scss"
 import cn from "classnames"
+import { fetchWeatherApi } from "openmeteo"
 
 export default function SingleCircuit() {
     const { id } = useParams()
@@ -175,43 +176,43 @@ export default function SingleCircuit() {
         },
 
         Mexico: {
-            "latitude": 19.4285,
-            "longitude": -99.1277,
-            "start_date": "2024-10-25",
-            "end_date": "2024-10-25",
-            "daily": ["weather_code"]
+            latitude: 19.4285,
+            longitude: -99.1277,
+            start_date: "2024-10-25",
+            end_date: "2024-10-25",
+            daily: ["weather_code"],
         },
 
         Brazil: {
-            "latitude": -23.5475,
-            "longitude": -46.6361,
-            "start_date": "2024-11-01",
-            "end_date": "2024-11-01",
-            "daily": ["weather_code"]
+            latitude: -23.5475,
+            longitude: -46.6361,
+            start_date: "2024-11-01",
+            end_date: "2024-11-01",
+            daily: ["weather_code"],
         },
 
         "United States": {
-            "latitude": 36.175,
-            "longitude": -115.1372,
-            "start_date": "2024-11-21",
-            "end_date": "2024-11-21",
-            "daily": ["weather_code"]
+            latitude: 36.175,
+            longitude: -115.1372,
+            start_date: "2024-11-21",
+            end_date: "2024-11-21",
+            daily: ["weather_code"],
         },
 
         Qatar: {
-            "latitude": 25.5,
-            "longitude": 51.25,
-            "start_date": "2024-11-29",
-            "end_date": "2024-11-29",
-            "daily": ["weather_code"]
+            latitude: 25.5,
+            longitude: 51.25,
+            start_date: "2024-11-29",
+            end_date: "2024-11-29",
+            daily: ["weather_code"],
         },
 
         "Abu Dhabi": {
-            "latitude": 24.4978,
-            "longitude": 54.6056,
-            "start_date": "2024-12-06",
-            "end_date": "2024-12-06",
-            "daily": ["weather_code"]
+            latitude: 24.4978,
+            longitude: 54.6056,
+            start_date: "2024-12-06",
+            end_date: "2024-12-06",
+            daily: ["weather_code"],
         },
     }
 
@@ -231,28 +232,33 @@ export default function SingleCircuit() {
             .catch((error) => console.error("Error fetching circuit!", error))
 
         // fetch openmeteo API
-        const fetchOpenMeteoData = async () => {
-            const params = paramsLocation[id] // id = location_key
-            const url = "https://archive-api.openmeteo.com/v1/archive"
-            try{
-                const responses = await fetchWeatherApi(url, params)
-                const response = responses[0]
-                const utcOffsetSeconds = response.utcOffSetSeconds()
-                const daily = response.daily();
-                const time = range(Number(daily.time()), Number(daily.timeEnd()), daily.interval()).map(
-                    (t) => new Date((t + utcOffsetSeconds) * 1000)
-                )
-                setOpenMeteoData({ time })
-            } catch (error){
-                console.error("Error fetching OpenMeteo data", error)
-            }
-        }
-        fetchOpenMeteoData()
-    }, [id])
+        // const fetchOpenMeteoData = async () => {
+        //     const params = paramsLocation[id] // id = location_key
+        //     const url = "https://archive-api.openmeteo.com/v1/archive"
+        //     try {
+        //         const responses = await fetchWeatherApi(url, params)
+        //         const response = responses[0]
+        //         const utcOffsetSeconds = response.utcOffSetSeconds()
+        //         const daily = response.daily()
+        //         const time = range(
+        //             Number(daily.time()),
+        //             Number(daily.timeEnd()),
+        //             daily.interval()
+        //         ).map((t) => new Date((t + utcOffsetSeconds) * 1000))
+        //         setOpenMeteoData({ time })
+        //     } catch (error) {
+        //         console.error("Error fetching OpenMeteo data", error)
+        //     }
+        // }
+        // fetchOpenMeteoData()
+    }, [])
 
-    const range = (start, stop, step) => {
-        return Array.from({ length: (stop - start)/step }, (_, i) => start + i )
-    }
+    // const range = (start, stop, step) => {
+    //     return Array.from(
+    //         { length: (stop - start) / step },
+    //         (_, i) => start + i
+    //     )
+    // }
 
     // TODO: create a function that automatically see the location (maybe feel like into the main with flags and name countries) and return the right country and the weather too.
 
@@ -261,5 +267,15 @@ export default function SingleCircuit() {
     // TODO: create a function that I can navigate through the circuits (previous and next)
 
     // TODO: create the layout of the page
-    return <Container></Container>
+    return (
+        <Container>
+            {circuit.map((item, index) => (
+                <div key={index}>
+                    <h1>{circuit.meeting_name}</h1>
+                    <p>Location: {circuit.location}</p>
+                    <p>Country: {circuit.country_name}</p>
+                </div>
+            ))}
+        </Container>
+    )
 }
