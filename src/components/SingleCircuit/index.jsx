@@ -269,13 +269,10 @@ export default function SingleCircuit() {
     // TODO: create the layout of the page
     return (
         <Container>
-            {circuit.map((item, index) => (
-                <div key={index}>
+                
                     <h1>{circuit.meeting_name}</h1>
                     <p>Location: {circuit.location}</p>
                     <p>Country: {circuit.country_name}</p>
-                </div>
-            ))}
         </Container>
     )
 }

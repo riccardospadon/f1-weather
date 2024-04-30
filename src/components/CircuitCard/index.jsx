@@ -33,7 +33,7 @@ export default function CircuitCard({ circuit, layout, flag }) {
                             <div className="d-flex justify-content-between">
                                 {/* location of the grand prix */}
                                 <h4>{circuit.country_name}</h4>
-                                {/*di fianco la bandiera del luogo, se riesco */}
+                                {/* country flag */}
                                 {flag && (
                                     <Card.Img
                                         src={flag}
