@@ -17,6 +17,7 @@
     transform: scale(1);
     transition: transform 0.7s ease-in-out;
     position: relative;
+    max-width: 304px;
 }
 
 .cardCircuit:hover {
@@ -37,7 +38,6 @@
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
-    width: 90%;
 }
 
 .imgCircuit {
