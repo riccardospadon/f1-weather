@@ -24,7 +24,7 @@ function App() {
 
                     {/* Route for a single circuit */}
                     <Route
-                        path="/circuit/:id"
+                        path="/circuit/:location"
                         element={
                             <>
                                 <NavNoSearch />
