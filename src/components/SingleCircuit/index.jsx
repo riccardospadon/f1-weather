@@ -216,12 +216,21 @@ export default function SingleCircuit() {
         },
     }
 
-    // TODO: Add a function
-
     // TODO: create a function that match the date from F1 API with the OPENMETEO ones...
 
     useEffect(() => {
         if(!location) return
+
+        // Convert id in location
+        if(!isNaN(location)){
+            const foundLocation = Object.keys(paramsLocation).find(
+                (key) => paramsLocation[key] === Number(location)
+            )
+            if(foundLocation){
+                navigate(`/circuit/${foundLocation}`,  {replace: true })
+            }
+        }
+
         // fetch f1 API
         fetch(
             `https://api.openf1.org/v1/meetings?year=2024&circuit_key=${location}`,
@@ -248,7 +257,7 @@ export default function SingleCircuit() {
             }
         }
         fetchOpenMeteoData()
-    }, [location])
+    }, [location, navigate])
 
     // TODO: create a function that automatically see the location (maybe feel like into the main with flags and name countries) and return the right country and the weather too.
     // const getLocation = (id) => {
@@ -284,6 +293,11 @@ export default function SingleCircuit() {
     // TODO: create the layout of the page
     return (
         <Container>
+            {circuit.length > 0 && (
+                <>
+                
+                </>
+            )}
             <h1>{circuit.location}</h1>
             <Row>
                 <Col>

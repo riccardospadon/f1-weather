@@ -22,7 +22,7 @@ export default function CircuitCard({ circuit, layout, flag }) {
     return (
         <Col className={cn("mb-5 d-flex")} xs={12} sm={6} lg={3}>
             <Link
-                to={`/circuit/${circuit.circuit_key}`}
+                to={`/circuit/${circuit.location}`}
                 className={cn(styles.textDeco)}
             >
                 <Card className={cn(styles.cardCircuit, styles.bg)}>
