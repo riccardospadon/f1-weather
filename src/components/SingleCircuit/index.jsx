@@ -219,15 +219,15 @@ export default function SingleCircuit() {
     // TODO: create a function that match the date from F1 API with the OPENMETEO ones...
 
     useEffect(() => {
-        if(!location) return
+        if (!location) return
 
         // Convert id in location
-        if(!isNaN(location)){
+        if (!isNaN(location)) {
             const foundLocation = Object.keys(paramsLocation).find(
                 (key) => paramsLocation[key] === Number(location)
             )
-            if(foundLocation){
-                navigate(`/circuit/${foundLocation}`,  {replace: true })
+            if (foundLocation) {
+                navigate(`/circuit/${foundLocation}`, { replace: true })
             }
         }
 
@@ -268,14 +268,11 @@ export default function SingleCircuit() {
     const getTyreByWeather = (weatherCode) => {
         switch (weatherCode) {
             case "rain":
-                return tyres.FULL_WET
+                return tyres.FULL_WET // full wet
             case "intermediate":
-                return tyres.INTERMEDIATE
-            case "dry":
-                return tyres.C3 // soft
-            // TODO: tyres C1, C2 and C3 should appear all together in dry conditions
+                return tyres.INTERMEDIATE // intermediate
             default:
-                return tyres.C1 // hard
+                return [tyres.C3, tyres.C2, tyres.C1] // soft, medium and hard
         }
     }
 
@@ -293,11 +290,7 @@ export default function SingleCircuit() {
     // TODO: create the layout of the page
     return (
         <Container>
-            {circuit.length > 0 && (
-                <>
-                
-                </>
-            )}
+            {circuit.length > 0 && <></>}
             <h1>{circuit.location}</h1>
             <Row>
                 <Col>
@@ -314,10 +307,12 @@ export default function SingleCircuit() {
                     </button>
                 </Col>
                 <Col>
-                    <img
-                        src={getTyreByWeather(openMeteoData.weather_code)}
-                        alt="Tyre"
-                    />
+                    {getTyreByWeather(openMeteoData.weather_code).map(
+                        (tyre, index) => (
+                            <img key={index} src={tyre} alt={`Tyre ${index}`} />
+                            // TODO: styles the tyres
+                        )
+                    )}
                 </Col>
             </Row>
         </Container>
