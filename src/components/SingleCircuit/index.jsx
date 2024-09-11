@@ -6,7 +6,7 @@ import cn from "classnames"
 
 export default function SingleCircuit() {
     const { location } = useParams()
-    const [circuit, setCircuit] = useState([])
+    const [circuit, setCircuit] = useState(null)
     const [openMeteoData, setOpenMeteoData] = useState({})
     const navigate = useNavigate()
 
@@ -238,7 +238,7 @@ export default function SingleCircuit() {
         )
             .then((response) => response.json())
             .then((data) => {
-                console.log(data)
+                console.log("API Data: ", data)
                 setCircuit(data)
             })
             .catch((error) => console.error("Error fetching circuit!", error))
@@ -259,10 +259,6 @@ export default function SingleCircuit() {
         fetchOpenMeteoData()
     }, [location, navigate])
 
-    // TODO: create a function that automatically see the location (maybe feel like into the main with flags and name countries) and return the right country and the weather too.
-    // const getLocation = (id) => {
-    //     return paramsLocation[id] ? id : "Unknown"
-    // }
 
     // TODO: create a function that automatically see the weather and return the right tyres that were used/using in the current GP
     const getTyreByWeather = (weatherCode) => {
@@ -290,31 +286,26 @@ export default function SingleCircuit() {
     // TODO: create the layout of the page
     return (
         <Container>
-            {circuit.length > 0 && <></>}
-            <h1>{circuit.location}</h1>
-            <Row>
-                <Col>
-                    <p>Location: {circuit.location}</p>
-                    <p>Country: {circuit.location}</p>
-                    <p>Paese: {location}</p>
-                </Col>
-                <Col>
-                    <button onClick={() => navigateToCircuit(prevCircuit)}>
-                        Prev
-                    </button>
-                    <button onClick={() => navigateToCircuit(nextCircuit)}>
-                        Next
-                    </button>
-                </Col>
-                <Col>
-                    {getTyreByWeather(openMeteoData.weather_code).map(
-                        (tyre, index) => (
-                            <img key={index} src={tyre} alt={`Tyre ${index}`} />
-                            // TODO: styles the tyres
-                        )
-                    )}
-                </Col>
-            </Row>
+            {circuit ? ( // Verifica se il circuito è stato caricato
+                <>
+                    <h1>{circuit.meeting_name || "No meeting name avaiable"}</h1> {/* Mostra il nome del Gran Premio */}
+                    <Row>
+                        <Col>
+                            <p>Location: {location}</p>
+                            <p>Country: {circuit.country_name || "No country name avaiable" }</p> {/* Mostra il nome del paese */}
+                        </Col>
+                        <Col>
+                            {getTyreByWeather(openMeteoData.weather_code).map((tyre, index) => (
+                                <img className={cn(styles.tyres)} key={index} src={tyre} alt={`Tyre ${index}`} />
+                            ))}
+                        </Col>
+                        <button onClick={() => navigateToCircuit(prevCircuit)}>Prev</button>
+                        <button onClick={() => navigateToCircuit(nextCircuit)}>Next</button>
+                    </Row>
+                </>
+            ) : (
+                <p>Loading...</p> // Messaggio di caricamento finché i dati non arrivano
+            )}
         </Container>
     )
 }
